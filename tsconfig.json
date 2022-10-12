@@ -1,0 +1,26 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "build",
+    "target": "ES5",
+    "module": "commonJs",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false
+  },
+  "include": ["src/**/*", "__tests__/**/*", "bin/**/*"],
+  "files": ["src/core/types/index.d.ts", "./Dockerfilepath.ts"],
+  "exclude": ["infra/**/*"]
+}
