@@ -6,7 +6,7 @@ import { generateApiRoutes } from './core/app/generateApiRoutes';
 import { generateApiResponse } from './core/app/generateApiResponse';
 import { slowDownMiddleware } from './core/app/slowDownMiddleware';
 
-const initApp = async (): Promise<Application> => {
+export const initApp = async (): Promise<Application> => {
   const app = express();
   app.use(slowDownMiddleware);
   app.use(generateSwagger());
@@ -15,5 +15,3 @@ const initApp = async (): Promise<Application> => {
   app.use(errorsMiddleware);
   return app;
 };
-
-export { initApp };

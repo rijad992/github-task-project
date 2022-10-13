@@ -47,7 +47,10 @@ const createApiRoute = (
   return apiRoutes;
 };
 
-const createApiRoutes = (): Record<string, Record<string, RequestHandler>> => {
+export const createApiRoutes = (): Record<
+  string,
+  Record<string, RequestHandler>
+> => {
   return transform(
     ModuleDiscoveryService.instance.getModules(),
     (moduleApiRoutes, module) => {
@@ -63,5 +66,3 @@ const createApiRoutes = (): Record<string, Record<string, RequestHandler>> => {
     {},
   );
 };
-
-export { createApiRoutes };
