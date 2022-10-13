@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node ./build/bin/www.js",
     "dev": "nodemon",
+    "depcheck": "depcheck",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
@@ -18,6 +19,11 @@
     "prettier": "prettier --config .prettierrc --write .",
     "test:watch": "jest --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run depcheck && npm run prettier"
+    }
+  },
   "dependencies": {
     "aigle": "^1.14.1",
     "awilix": "^7.0.3",
@@ -26,6 +32,7 @@
     "express": "^4.18.1",
     "express-slow-down": "^1.5.0",
     "glob": "^8.0.3",
+    "husky": "^8.0.1",
     "lodash": "^4.17.21",
     "octokit": "^2.0.7",
     "swagger-jsdoc": "^6.2.5",
