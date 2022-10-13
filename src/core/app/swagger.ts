@@ -1,10 +1,10 @@
-import express from 'express';
+import express, { Router } from 'express';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { globFiles } from '../../shared/files';
 import * as swaggerUi from 'swagger-ui-express';
 
-const generateSwaggerDocs = () => {
+const generateSwaggerDocs = (): object => {
   const controllerPaths = globFiles(
     path.join(__dirname, '../../modules/*/controller.{ts,js}'),
   );
@@ -23,7 +23,7 @@ const generateSwaggerDocs = () => {
   return swaggerJSDoc(options);
 };
 
-export const generateSwagger = () => {
+export const generateSwagger = (): Router => {
   const router = express.Router();
 
   router.use('/api-docs', swaggerUi.serve);

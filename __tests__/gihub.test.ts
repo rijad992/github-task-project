@@ -34,6 +34,18 @@ describe('Github', () => {
         expect(body.success).toBe(true);
         expect(body.data.length).toBeGreaterThan(0);
       });
+
+      it('should return 406 if accept headers are application/xml', async () => {
+        diSetupInit();
+        await initAppServices();
+        const app = await initApp();
+
+        const username = 'rijad992';
+        await supertest(app)
+          .get(`/api/github/findnonforkeduserrepositories?username=${username}`)
+          .set('accept', 'application/xml')
+          .expect(406);
+      });
     });
   });
 });
