@@ -37,6 +37,7 @@ Unit tests are performed by jest.
 ### Development
 
 To start local development server use `npm run dev` script which utilizes nodemon.
+Use `.env.example` to create `.env` file with your personal data.
 
 ### Deployment
 

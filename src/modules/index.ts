@@ -3,7 +3,7 @@ import transform from 'lodash/transform';
 import { container } from '../core/di-container/di-container';
 import { BaseControler } from '../core/models/BaseController.model';
 import ModuleDiscoveryService from '../services/moduleDiscoveryService';
-import { ControllerRequestHandler } from '../types/controllerRequestHandler.type';
+import { ControllerRequestHandler } from '../core/types/controllerRequestHandler.type';
 
 const wrapControlerFunction = (
   moduleName: string,
