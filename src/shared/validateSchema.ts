@@ -6,7 +6,7 @@ export const validateSchema = async <T>(
   schemaValue: T,
 ) => {
   try {
-    const res = await schema.validateAsync(schemaValue);
+    const res = await schema.validateAsync<T>(schemaValue);
     return res;
   } catch (err) {
     throw new SchemaError({ message: (err as Joi.ValidationError).message });

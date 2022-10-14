@@ -6,7 +6,7 @@ export const helmetMiddleware = (
   request: Request,
   response: Response,
   next: NextFunction,
-) => {
+): void => {
   const nonce = crypto.randomBytes(16).toString('hex');
   const contentSecurityPolicyDirectives = {
     'default-src': ["'self'"],
