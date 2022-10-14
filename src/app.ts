@@ -5,10 +5,12 @@ import { errorsMiddleware } from './core/app/errorsMiddleware';
 import { generateApiRoutes } from './core/app/generateApiRoutes';
 import { generateApiResponse } from './core/app/generateApiResponse';
 import { slowDownMiddleware } from './core/app/slowDownMiddleware';
+import { helmetMiddleware } from './core/app/helmetMiddleware';
 
 export const initApp = async (): Promise<Application> => {
   const app = express();
   app.use(slowDownMiddleware);
+  app.use(helmetMiddleware);
   app.use(generateSwagger());
   app.use(acceptHeaderseMiddleware);
   app.use('/api', generateApiRoutes(), generateApiResponse());

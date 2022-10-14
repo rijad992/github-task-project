@@ -8,5 +8,8 @@ declare global {
         moduleFunctionPath: string;
       };
     }
+    export interface Application {
+      nonce: string;
+    }
   }
 }
