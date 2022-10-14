@@ -28,6 +28,11 @@ class GeneralError {
           status: this.status || 500,
           message: this.message,
         });
+      case 'SchemaError':
+        return this.getErrorReturnValue({
+          status: this.status || 400,
+          message: this.message,
+        });
       default:
         return this.getErrorReturnValue({
           status: 500,
@@ -50,4 +55,15 @@ class GithubResponseError extends GeneralError {
   className = 'GithubResponseError';
 }
 
-export { GeneralError, BadRequest, NotFound, Forbidden, GithubResponseError };
+class SchemaError extends GeneralError {
+  className = 'SchemaError';
+}
+
+export {
+  GeneralError,
+  BadRequest,
+  NotFound,
+  Forbidden,
+  GithubResponseError,
+  SchemaError,
+};

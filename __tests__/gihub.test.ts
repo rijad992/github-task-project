@@ -46,6 +46,18 @@ describe('Github', () => {
           .set('accept', 'application/xml')
           .expect(406);
       });
+
+      it('should return 400 if username querystring is not valid', async () => {
+        diSetupInit();
+        await initAppServices();
+        const app = await initApp();
+
+        const username = '';
+        await supertest(app)
+          .get(`/api/github/findnonforkeduserrepositories?username=${username}`)
+          .set('accept', 'application/json')
+          .expect(400);
+      });
     });
   });
 });

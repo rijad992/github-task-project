@@ -3,9 +3,10 @@ import Github from './entity';
 
 import { BaseControler } from '../../core/models/BaseController.model';
 import { Get } from '../../core/decorators/http.decorator';
-import { GithubResponseError } from '../../shared/Errors';
-import GithubRequestError from '../../core/models/GithubRequestError.model';
 import { NonForkedUserRepos } from '../../core/models/NonForkedUserRepos.model';
+import { validateSchema } from '../../shared/validateSchema';
+import { findNonForkedUserReposSchema } from './schema';
+import findNonForkedUserRepositories from './dto/findNonForkedUserRepos.dto';
 
 class GithubController implements BaseControler {
   entity: Github;
@@ -89,16 +90,15 @@ class GithubController implements BaseControler {
     _res: Response,
     next: (responseObj: NonForkedUserRepos[], err: Error) => void,
   ): Promise<void> {
-    try {
-      const username = req.query.username as string;
-      const repos = await this.entity.getNonForkedUserRepositories(username);
-      next(repos, null);
-    } catch (err) {
-      throw new GithubResponseError({
-        status: (err as GithubRequestError).status,
-        message: (err as GithubRequestError).message,
-      });
-    }
+    await validateSchema<findNonForkedUserRepositories>(
+      findNonForkedUserReposSchema(),
+      {
+        username: req.query.username as string,
+      },
+    );
+    const username = req.query.username as string;
+    const repos = await this.entity.getNonForkedUserRepositories(username);
+    next(repos, null);
   }
 }
 
