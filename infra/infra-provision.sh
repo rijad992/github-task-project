@@ -20,7 +20,7 @@ echo "Run pulumi command..."
 
 if [ $COMMAND = "up" ]
 then 
-COMMAND_ARGS="--skip-preview"
+COMMAND_ARGS="--yes"
 fi
 
 pulumi $COMMAND $UP_COMMAND_ARGS
