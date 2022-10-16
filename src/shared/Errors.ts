@@ -7,7 +7,7 @@ class GeneralError {
     this.message = message;
     this.status = status;
   }
-  getErrorReturnValue = ({
+  protected getErrorReturnValue = ({
     status = 500,
     message = this.message,
   }): { status: number; message: string } => {
@@ -36,7 +36,7 @@ class GeneralError {
       default:
         return this.getErrorReturnValue({
           status: 500,
-          message: 'Unrecognized error.',
+          message: this.message || 'Unrecognized error.',
         });
     }
   };

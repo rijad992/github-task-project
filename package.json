@@ -68,6 +68,9 @@
     },
     "transformIgnorePatterns": [
       "node_modules/(?!variables/.*)"
+    ],
+    "testPathIgnorePatterns": [
+      "__tests__/utils"
     ]
   },
   "author": "Rijad Lendo",

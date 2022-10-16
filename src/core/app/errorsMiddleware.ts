@@ -5,7 +5,7 @@ export const errorsMiddleware = async (
   error: GeneralError,
   _request: Request,
   response: Response,
-  _next: NextFunction,
+  next: NextFunction,
 ): Promise<void> => {
   const err =
     error instanceof GeneralError
@@ -21,4 +21,6 @@ export const errorsMiddleware = async (
       status: errorDetails.status,
     },
   });
+
+  next();
 };
