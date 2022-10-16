@@ -46,7 +46,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Preview with pulumi
         working-directory: ./infra
-        run: curl -fsSL https://get.pulumi.com | sh | pulumi preview dev
+        run: curl -fsSL https://get.pulumi.com | sh | pulumi preview
 
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
