@@ -4,7 +4,7 @@ COMMAND=$1
 STACK=$2
 
 echo "Installing pulumi..."
-#curl -fsSL https://get.pulumi.com | sh
+curl -fsSL https://get.pulumi.com | sh
 
 echo "Set stack..."
 
