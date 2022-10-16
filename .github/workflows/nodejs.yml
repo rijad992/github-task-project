@@ -45,6 +45,7 @@ jobs:
           aws-region: eu-central-1
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - uses: pulumi/actions@v3
+        run: pulumi config test test1
         with:
           command: preview
           stack-name: dev
