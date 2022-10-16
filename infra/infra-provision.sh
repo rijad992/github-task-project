@@ -23,4 +23,4 @@ then
 COMMAND_ARGS="--yes"
 fi
 
-pulumi $COMMAND $UP_COMMAND_ARGS
+pulumi $COMMAND $COMMAND_ARGS
