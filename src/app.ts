@@ -11,9 +11,9 @@ import { corsMiddleware } from './core/app/corsMiddleware';
 export const initApp = async (): Promise<Application> => {
   const app = express();
   app.use(slowDownMiddleware);
+  app.use(generateSwagger());
   app.use(helmetMiddleware);
   app.use(corsMiddleware);
-  app.use(generateSwagger());
   app.use(acceptHeaderseMiddleware);
   app.use('/api', generateApiRoutes(), generateApiResponse());
   app.use(errorsMiddleware);
