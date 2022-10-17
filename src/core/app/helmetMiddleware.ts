@@ -9,16 +9,16 @@ export const helmetMiddleware = (
 ): void => {
   const nonce = crypto.randomBytes(16).toString('hex');
   const contentSecurityPolicyDirectives = {
-    'default-src': ["'self'"],
-    'base-uri': ["'self'"],
+    'default-src': ["'http:'"],
+    'base-uri': ["'http:'"],
     'block-all-mixed-content': [],
-    'font-src': ["'self'", 'data:'],
+    'font-src': ["'http:'", 'data:'],
     'frame-ancestors': ["'self'"],
-    'img-src': ["'self'", 'data:'],
+    'img-src': ["'http:'", 'data:'],
     'object-src': ["'none'"],
-    'script-src': ["'self'", "'unsafe-inline'", `'nonce-${nonce}'`],
+    'script-src': ["'http:'", "'unsafe-inline'", `'nonce-${nonce}'`],
     'script-src-attr': ["'none'"],
-    'style-src': ["'self'", "'unsafe-inline'"],
+    'style-src': ["'http:'", "'unsafe-inline'"],
     'require-trusted-types-for': ["'script'"],
   };
   request.app.nonce = nonce;
