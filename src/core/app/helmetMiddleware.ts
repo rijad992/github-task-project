@@ -24,5 +24,7 @@ export const helmetMiddleware = (
   request.app.nonce = nonce;
   helmet({
     contentSecurityPolicy: { directives: contentSecurityPolicyDirectives },
+    crossOriginResourcePolicy: false,
+
   })(request, response, next);
 };
