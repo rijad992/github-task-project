@@ -10,6 +10,7 @@ export class MockOctokitService {
                   {
                     name: 'd3',
                     fork: false,
+                    owner: { login: 'rijad992' },
                   },
                 ],
               });

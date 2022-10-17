@@ -12,6 +12,7 @@ describe('get non forked user repos', () => {
       {
         name: 'd3',
         fork: false,
+        ownerLogin: 'rijad992',
         branches: [{ name: 'master', latestCommitSha: '4975398kjdsbfbs734' }],
       },
     ]);
@@ -22,6 +23,7 @@ describe('get non forked user repos', () => {
     const username = 'rijad99jfsdjlfksd2';
     const entity = new Github({ OctokitService: octokit });
     let error: GithubResponseError = null;
+    
     try {
       await entity.getNonForkedUserRepositories(username);
       expect(true).toBe(false);
