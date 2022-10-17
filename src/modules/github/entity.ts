@@ -21,9 +21,10 @@ class Github {
       const nonForkedRepos = await Promise.all(
         res.data
           .filter((repo) => !repo.fork)
-          .map(async ({ name, fork }) => ({
+          .map(async ({ name, fork, owner }) => ({
             name,
             fork,
+            ownerLogin: owner.login,
             branches: (
               await this.octokitService.octokit.rest.repos.listBranches({
                 owner: username,
