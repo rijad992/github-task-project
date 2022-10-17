@@ -49,13 +49,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: eu-central-1
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - uses: pulumi/actions@v3
-        with:
-          command: preview
-          stack-name: dev
-          work-dir: ./infra
+      - name: Preview with pulumi
+        working-directory: ./infra
+        run: sh infra-provision.sh preview dev
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
   deploy:
     name: Deploy to aws
@@ -78,10 +77,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: eu-central-1
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - uses: pulumi/actions@v3
-        with:
-          command: up
-          stack-name: dev
-          work-dir: ./infra
+      - name: Deploy with pulumi
+        working-directory: ./infra
+        run: sh infra-provision.sh up dev
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
