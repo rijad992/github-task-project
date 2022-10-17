@@ -12,13 +12,13 @@ export const helmetMiddleware = (
     'default-src': ["'self'"],
     'base-uri': ["'self'"],
     'block-all-mixed-content': [],
-    'font-src': ["'self'", 'https:', 'data:'],
+    'font-src': ["'self'", 'data:'],
     'frame-ancestors': ["'self'"],
     'img-src': ["'self'", 'data:'],
     'object-src': ["'none'"],
     'script-src': ["'self'", "'unsafe-inline'", `'nonce-${nonce}'`],
     'script-src-attr': ["'none'"],
-    'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+    'style-src': ["'self'", "'unsafe-inline'"],
     'require-trusted-types-for': ["'script'"],
   };
   request.app.nonce = nonce;
